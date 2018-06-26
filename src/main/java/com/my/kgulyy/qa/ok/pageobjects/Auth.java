@@ -11,12 +11,15 @@ public class Auth {
     }
 
     public void signIn() {
-        String login = System.getenv("LOGIN");
-        String password = System.getenv("PASSWORD");
+        final AuthForm authForm = new AuthForm(driver);
+        authForm.open();
 
-        AuthForm authForm = new AuthForm(driver);
+        final String login = System.getenv("LOGIN");
         authForm.setLogin(login);
+
+        final String password = System.getenv("PASSWORD");
         authForm.setPassword(password);
+
         authForm.submit();
     }
 }

@@ -14,7 +14,7 @@ public class MainPage {
     }
 
     public String getUsername() {
-        WebElement username = driver.findElement(By.xpath(USERNAME_XPATH));
+        final WebElement username = driver.findElement(By.xpath(USERNAME_XPATH));
         return username.getText();
     }
 }

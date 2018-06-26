@@ -17,16 +17,15 @@ public class AuthTest {
     @Before
     public void setUp() {
         driver = DriverUtils.getWebDriver();
-        driver.get("https://ok.ru");
     }
 
     @Test
     public void auth() {
-        Auth auth = new Auth(driver);
+        final Auth auth = new Auth(driver);
         auth.signIn();
 
-        MainPage mainPage = new MainPage(driver);
-        String username = mainPage.getUsername();
+        final MainPage mainPage = new MainPage(driver);
+        final String username = mainPage.getUsername();
         Assert.assertEquals(USERNAME, username);
     }
 
