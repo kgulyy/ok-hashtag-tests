@@ -13,11 +13,10 @@ import org.openqa.selenium.WebDriver;
 public class CreateRemoveGroupTest {
     private static final String PAGE_NAME = "My page";
 
-    private static WebDriver driver;
+    private final WebDriver driver = DriverUtils.getWebDriver();
 
     @Before
     public void setUp() {
-        driver = DriverUtils.getWebDriver();
         final Auth auth = new Auth(driver);
         auth.signIn();
     }
