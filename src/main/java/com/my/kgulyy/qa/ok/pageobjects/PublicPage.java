@@ -15,6 +15,7 @@ public class PublicPage {
         groupPage = new GroupPage(driver);
     }
 
+    @SuppressWarnings("unused")
     public void create() {
         create(DEFAULT_PAGE_NAME);
     }
@@ -27,12 +28,10 @@ public class PublicPage {
         popup.submit();
     }
 
-    @SuppressWarnings("unused")
     public void openFeedPage() {
         groupPage.openFeedPage();
     }
 
-    @SuppressWarnings("unused")
     public void openForumPage() {
         groupPage.openForumPage();
     }
