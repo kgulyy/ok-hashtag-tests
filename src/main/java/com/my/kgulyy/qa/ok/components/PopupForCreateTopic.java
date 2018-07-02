@@ -7,8 +7,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PopupForCreateTopic {
-    private static final String CREATE_TOPIC_FIELD_XPATH = "//a[contains(@data-l, \"OpenPostingPopup\")]";
-    private static final String TOPIC_TEXT_FIELD_XPATH = "//div[@data-module=\"postingForm/mediaText\"]";
+//    private static final String CREATE_TOPIC_FIELD_XPATH = "//a[contains(@data-l, \"OpenPostingPopup\")]";
+    private static final String CREATE_TOPIC_FIELD_XPATH = "//div[@class=\"input_placeholder\"]";
+//    private static final String TOPIC_TEXT_FIELD_XPATH = "//div[@data-module=\"postingForm/mediaText\"]";
+    private static final String TOPIC_TEXT_FIELD_XPATH = "//div[contains(@class, \"ok-posting-handler\")]";
     private static final String SUBMIT_BUTTON_CSS = "div.posting_submit.button-pro";
     private static final String POPUP_ID = "mtLayerMain";
 
@@ -23,7 +25,7 @@ public class PopupForCreateTopic {
 
     public void open() {
         final WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(CREATE_TOPIC_FIELD_XPATH)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CREATE_TOPIC_FIELD_XPATH)));
         final WebElement createTopicField = driver.findElement(By.xpath(CREATE_TOPIC_FIELD_XPATH));
         createTopicField.click();
     }

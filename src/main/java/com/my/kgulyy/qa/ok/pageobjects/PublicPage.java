@@ -15,7 +15,6 @@ public class PublicPage {
         groupPage = new GroupPage(driver);
     }
 
-    @SuppressWarnings("unused")
     public void create() {
         create(DEFAULT_PAGE_NAME);
     }
