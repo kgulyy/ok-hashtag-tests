@@ -23,7 +23,7 @@ public class PopupForCreateTopic {
 
     public void open() {
         final WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CREATE_TOPIC_FIELD_XPATH)));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(CREATE_TOPIC_FIELD_XPATH)));
         final WebElement createTopicField = driver.findElement(By.xpath(CREATE_TOPIC_FIELD_XPATH));
         createTopicField.click();
     }
