@@ -11,13 +11,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TopicHashtagTest {
     private static final String TAG_WITH_SPEC_SYMBOL_ERROR = "В ключевых словах содержатся запрещенные символы";
-    @SuppressWarnings("unused")
     private static final String TAGS_ARE_ENOUGH_WARNING = "Ключевых слов достаточно, спасибо";
     private static final String MIN_LENGTH_OF_TAG_WARNING = "Минимальная длина ключевого слова 2 символа";
 
@@ -250,6 +251,115 @@ public class TopicHashtagTest {
         assertTrue(noOneHashtags);
     }
 
+    @Test
+    public void addRemoveTwoDifferentTags() {
+        boolean noOneHashtags = topic.noOneHashtags();
+        assertTrue(noOneHashtags);
+
+        final List<String> tags = Arrays.asList("first", "second");
+        topic.addAllTags(tags);
+
+        checkAllTempTags(tags);
+        driver.navigate().refresh();
+        checkAllHashtags(tags);
+
+        topic.removeAllTags(tags);
+
+        driver.navigate().refresh();
+        noOneHashtags = topic.noOneHashtags();
+        assertTrue(noOneHashtags);
+    }
+
+    @Test
+    public void addTwoSameTags() {
+        final List<String> tags = Arrays.asList("same", "same");
+        topic.addAllTags(tags);
+
+        final String addedTag = tags.get(0);
+        checkTempTag(addedTag);
+        driver.navigate().refresh();
+        checkHashtag(addedTag);
+    }
+
+    @Test
+    public void addRemoveMaximTags() {
+        boolean noOneHashtags = topic.noOneHashtags();
+        assertTrue(noOneHashtags);
+
+        final List<String> tags = Arrays.asList("11", "22", "33", "44", "55", "66", "77");
+        topic.addAllTags(tags);
+
+        checkAllTempTags(tags);
+        driver.navigate().refresh();
+        checkAllHashtags(tags);
+
+        topic.removeAllTags(tags);
+
+        driver.navigate().refresh();
+        noOneHashtags = topic.noOneHashtags();
+        assertTrue(noOneHashtags);
+    }
+
+    @Test
+    public void addTooMuchTags() {
+        final List<String> tags = Arrays.asList("11", "22", "33", "44", "55", "66", "77", "88");
+        topic.addAllTags(tags);
+
+        final String errorMessage = topic.getTagErrorMessage();
+        assertEquals(TAGS_ARE_ENOUGH_WARNING, errorMessage);
+    }
+
+    @Test
+    public void addEditOneTag() {
+        final String tag = "tag";
+        topic.addTag(tag);
+        checkTempTag(tag);
+
+        final String newTag = "new_tag";
+        topic.editTag(tag, newTag);
+
+        checkTempTag(newTag);
+        driver.navigate().refresh();
+        checkHashtag(newTag);
+    }
+
+    @Test
+    public void addTwoTagsEditFirstEditSecond() {
+        final String firstTag = "first";
+        final String secondTag = "second";
+        final List<String> tags = Arrays.asList(firstTag, secondTag);
+        topic.addAllTags(tags);
+
+        final String newFirstTag = "new_first";
+        topic.editTag(firstTag, newFirstTag);
+
+        final List<String> tagsWithNewFirst = Arrays.asList(newFirstTag, secondTag);
+        checkAllTempTags(tagsWithNewFirst);
+        driver.navigate().refresh();
+        checkAllHashtags(tagsWithNewFirst);
+
+        final String newSecondTag = "new_second";
+        topic.editHashtag(secondTag, newSecondTag);
+
+        final List<String> newTags = Arrays.asList(newFirstTag, newSecondTag);
+        checkAllTempTags(newTags);
+        driver.navigate().refresh();
+        checkAllHashtags(newTags);
+    }
+
+    @Test
+    public void addSeveralTagsEditAll() {
+        final List<String> tags = Arrays.asList("11", "22", "33", "44");
+        topic.addAllTags(tags);
+
+        final List<String> newTags = Arrays.asList("00", "100");
+        topic.editAllTags(tags, newTags);
+
+        checkAllTempTags(newTags);
+        driver.navigate().refresh();
+        checkAllHashtags(newTags);
+    }
+
     private void checkTempTag(String tag) {
         final int numberOfTags = topic.getNumberOfTempTags();
         assertEquals(1, numberOfTags);
@@ -257,7 +367,6 @@ public class TopicHashtagTest {
         assertTrue(isExistTag);
     }
 
-    @SuppressWarnings("unused")
     private void checkAllTempTags(List<String> tags) {
         final int numberOfTags = topic.getNumberOfTempTags();
         assertEquals(tags.size(), numberOfTags);
@@ -274,7 +383,6 @@ public class TopicHashtagTest {
         assertTrue(isExistHashtag);
     }
 
-    @SuppressWarnings("unused")
     private void checkAllHashtags(List<String> hashtags) {
         final int numberOfHashtags = topic.getNumberOfHashtags();
         assertEquals(hashtags.size(), numberOfHashtags);

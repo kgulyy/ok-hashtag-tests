@@ -94,7 +94,7 @@ public class TopicHashtags {
 
     public int getRemainingTagLength() {
         final WebElement tagLengthCounter = driver.findElement(By.xpath(TAG_LENGTH_COUNTER_XPATH));
-        final String remainingTagLengthStr =  tagLengthCounter.getText();
+        final String remainingTagLengthStr = tagLengthCounter.getText();
         return Integer.parseInt(remainingTagLengthStr);
     }
 

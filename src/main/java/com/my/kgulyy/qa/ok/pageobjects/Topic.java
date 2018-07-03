@@ -49,7 +49,6 @@ public class Topic {
         topicHashtags.submit();
     }
 
-    @SuppressWarnings("unused")
     public void addAllTags(List<String> tags) {
         topicHashtags.openTagsInput();
         for (String tag : tags) {
@@ -64,7 +63,6 @@ public class Topic {
         topicHashtags.submit();
     }
 
-    @SuppressWarnings("unused")
     public void removeAllTags(List<String> tags) {
         topicHashtags.openTagsInput();
         for (String tag : tags) {
@@ -75,6 +73,13 @@ public class Topic {
 
     public void editTag(String tag, String newTag) {
         topicHashtags.editTags();
+        topicHashtags.removeTag(tag);
+        topicHashtags.setTag(newTag);
+        topicHashtags.submit();
+    }
+
+    public void editHashtag(String tag, String newTag) {
+        topicHashtags.openTagsInput();
         topicHashtags.removeTag(tag);
         topicHashtags.setTag(newTag);
         topicHashtags.submit();
