@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 public class CreateRemoveGroupTest {
     private static final String PAGE_NAME = "My page";
 
-    private final WebDriver driver = DriverUtils.getWebDriver();
+    private final WebDriver driver = DriverUtils.getRemoteWebDriver();
 
     @Before
     public void setUp() {

@@ -26,7 +26,7 @@ public class TopicHashtagTest {
     private final Topic topic;
 
     public TopicHashtagTest() {
-        driver = DriverUtils.getWebDriver();
+        driver = DriverUtils.getRemoteWebDriver();
         publicPage = new PublicPage(driver);
         topic = new Topic(driver);
     }
