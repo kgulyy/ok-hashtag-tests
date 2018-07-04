@@ -23,6 +23,9 @@ public class TopicHashtags {
     private static final String ERROR_MESSAGE_XPATH = "//span[@class=\"input-e\"]";
     private static final String TAG_LENGTH_COUNTER_XPATH = "//span[contains(@class,\"txt-counter\")]";
 
+    private static final long TIMEOUT_IN_SECONDS = 10;
+    private static final long SLEEP_IN_MILLISECONDS = 100;
+
     private final WebDriver driver;
 
     public TopicHashtags(WebDriver driver) {
@@ -30,7 +33,7 @@ public class TopicHashtags {
     }
 
     public void openTagsInput() {
-        final WebDriverWait wait = new WebDriverWait(driver, 30, 100);
+        final WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ADD_TAGS_BUTTON_XPATH)));
         final WebElement addTagButton = driver.findElement(By.xpath(ADD_TAGS_BUTTON_XPATH));
         addTagButton.click();

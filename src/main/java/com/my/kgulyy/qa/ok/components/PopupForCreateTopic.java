@@ -12,7 +12,7 @@ public class PopupForCreateTopic {
     private static final String SUBMIT_BUTTON_XPATH = "//div[@class=\"posting_submit button-pro\"]";
     private static final String POPUP_ID = "mtLayerMain";
 
-    private static final long TIMEOUT_IN_SECONDS = 30;
+    private static final long TIMEOUT_IN_SECONDS = 10;
     private static final long SLEEP_IN_MILLISECONDS = 100;
 
     private final WebDriver driver;

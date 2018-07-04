@@ -13,7 +13,7 @@ public class PopupForCreateGroup {
     private static final String SUBMIT_ID = "hook_FormButton_button_create";
     private static final String POPUP_CLASS_NAME = "modal-new_center";
 
-    private static final long TIMEOUT_IN_SECONDS = 30;
+    private static final long TIMEOUT_IN_SECONDS = 10;
     private static final long SLEEP_IN_MILLISECONDS = 100;
 
     private final WebDriver driver;
