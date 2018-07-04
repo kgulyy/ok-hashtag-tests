@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class PopupForCreateTopic {
     private static final String CREATE_TOPIC_FIELD_XPATH = "//a[contains(@data-l, \"OpenPostingPopup\")]";
     private static final String TOPIC_TEXT_FIELD_XPATH = "//div[@data-module=\"postingForm/mediaText\"]";
-    private static final String SUBMIT_BUTTON_CSS = "div.posting_submit.button-pro";
+    private static final String SUBMIT_BUTTON_XPATH = "//div[@class=\"posting_submit button-pro\"]";
     private static final String POPUP_ID = "mtLayerMain";
 
     private static final long TIMEOUT_IN_SECONDS = 30;
@@ -34,7 +34,7 @@ public class PopupForCreateTopic {
     }
 
     public void submit() {
-        final WebElement submitButton = driver.findElement(By.cssSelector(SUBMIT_BUTTON_CSS));
+        final WebElement submitButton = driver.findElement(By.xpath(SUBMIT_BUTTON_XPATH));
         submitButton.click();
         waitClosing();
     }
