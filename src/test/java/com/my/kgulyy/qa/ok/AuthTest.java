@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 public class AuthTest {
     private static final String USERNAME = "Феофан Лампер";
 
-    private final WebDriver driver = DriverUtils.getRemoteWebDriver();
+    private final WebDriver driver = DriverUtils.getWebDriver();
 
     @Test
     public void auth() {

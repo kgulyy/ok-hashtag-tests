@@ -20,7 +20,7 @@ public class CreateTopicTest {
     private final PublicPage publicPage;
 
     public CreateTopicTest() {
-        driver = DriverUtils.getRemoteWebDriver();
+        driver = DriverUtils.getWebDriver();
         publicPage = new PublicPage(driver);
     }
 

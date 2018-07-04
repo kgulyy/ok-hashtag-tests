@@ -12,21 +12,37 @@ import java.util.concurrent.TimeUnit;
 public class DriverUtils {
     private static final long TIME_TO_IMPLICIT_WAIT = 1;
 
-    @SuppressWarnings("unused")
-    public static WebDriver getLocalWebDriver() {
-        final String webDriverPath = System.getenv("WEBDRIVER_PATH");
-        System.setProperty("webdriver.chrome.driver", webDriverPath);
-        final WebDriver driver = new ChromeDriver();
+    public static WebDriver getWebDriver() {
+        String webDriverType = System.getenv("webdriver.type");
+        if (webDriverType == null) {
+            webDriverType = "local";
+        }
+        final WebDriver driver;
+        switch (webDriverType) {
+            case "remote":
+                driver = getRemoteWebDriver();
+                break;
+            case "local":
+            default:
+                driver = getLocalWebDriver();
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(TIME_TO_IMPLICIT_WAIT, TimeUnit.SECONDS);
 
         return driver;
     }
 
-    public static WebDriver getRemoteWebDriver() {
+    private static WebDriver getLocalWebDriver() {
+        final String webDriverPath = System.getenv("webdriver.path");
+        System.setProperty("webdriver.chrome.driver", webDriverPath);
+
+        return new ChromeDriver();
+    }
+
+    private static WebDriver getRemoteWebDriver() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
-        capabilities.setVersion("chrome_67.0");
+        capabilities.setVersion("67.0");
         capabilities.setCapability("enableVNC", true);
 
         WebDriver driver = null;
@@ -35,8 +51,6 @@ public class DriverUtils {
                     URI.create("http://178.128.36.229:4444/wd/hub").toURL(),
                     capabilities
             );
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(TIME_TO_IMPLICIT_WAIT, TimeUnit.SECONDS);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
