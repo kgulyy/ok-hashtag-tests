@@ -14,10 +14,10 @@ public class Auth {
         final AuthForm authForm = new AuthForm(driver);
         authForm.open();
 
-        final String login = System.getenv("LOGIN");
+        final String login = System.getenv("login");
         authForm.setLogin(login);
 
-        final String password = System.getenv("PASSWORD");
+        final String password = System.getenv("password");
         authForm.setPassword(password);
 
         authForm.submit();

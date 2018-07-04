@@ -1,5 +1,9 @@
 package com.my.kgulyy.qa.utils;
 
+import java.io.UncheckedIOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class StringUtils {
 
     public static int getDigitsFromString(String str) {
@@ -13,5 +17,13 @@ public class StringUtils {
             stringBuilder.append(symbol);
         }
         return stringBuilder.toString();
+    }
+
+    static URL getUrlFromString(String stringUrl) {
+        try {
+            return new URL(stringUrl);
+        } catch (MalformedURLException e) {
+            throw new UncheckedIOException(e);
+        }
     }
 }

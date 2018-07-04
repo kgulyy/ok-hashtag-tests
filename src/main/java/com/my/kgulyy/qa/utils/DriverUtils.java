@@ -5,12 +5,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.MalformedURLException;
-import java.net.URI;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class DriverUtils {
     private static final long TIME_TO_IMPLICIT_WAIT = 1;
+
+    private DriverUtils() {
+    }
 
     public static WebDriver getWebDriver() {
         String webDriverType = System.getenv("webdriver.type");
@@ -40,21 +42,14 @@ public class DriverUtils {
     }
 
     private static WebDriver getRemoteWebDriver() {
+        final String remoteUrlStr = System.getenv("remote.url");
+        final URL remoteURL = StringUtils.getUrlFromString(remoteUrlStr);
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
         capabilities.setVersion("67.0");
         capabilities.setCapability("enableVNC", true);
 
-        WebDriver driver = null;
-        try {
-            driver = new RemoteWebDriver(
-                    URI.create("http://178.128.36.229:4444/wd/hub").toURL(),
-                    capabilities
-            );
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        return driver;
+        return new RemoteWebDriver(remoteURL, capabilities);
     }
 }
