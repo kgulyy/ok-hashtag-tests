@@ -4,7 +4,10 @@ import java.io.UncheckedIOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class StringUtils {
+public final class StringUtils {
+
+    private StringUtils() {
+    }
 
     public static int getDigitsFromString(String str) {
         final String numberStr = str.replaceAll("\\D+", "");

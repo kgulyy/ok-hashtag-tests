@@ -8,7 +8,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class DriverUtils {
+public final class DriverUtils {
     private static final long TIME_TO_IMPLICIT_WAIT = 1;
 
     private DriverUtils() {
@@ -45,7 +45,7 @@ public class DriverUtils {
         final String remoteUrlStr = System.getenv("WEBDRIVER_REMOTE_URL");
         final URL remoteURL = StringUtils.getUrlFromString(remoteUrlStr);
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
+        final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName("chrome");
         capabilities.setVersion("67.0");
         capabilities.setCapability("enableVNC", true);
