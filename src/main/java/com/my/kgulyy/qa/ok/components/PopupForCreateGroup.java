@@ -10,6 +10,7 @@ public class PopupForCreateGroup {
     private static final String CREATE_GROUP_XPATH = "//div[@class=\"create-group\"]/a";
     private static final String CREATE_PUBLIC_PAGE_XPATH = "//a[contains(@data-l,\"PAGE\")]";
     private static final String NAME_FIELD_ID = "field_name";
+    private static final String SUBCATEGORY_FIELD_XPATH = "//select[@id=\"field_pageMixedCategory\"]/option[@value=\"subcatVal12001\"]";
     private static final String SUBMIT_ID = "hook_FormButton_button_create";
     private static final String POPUP_CLASS_NAME = "modal-new_center";
 
@@ -35,6 +36,11 @@ public class PopupForCreateGroup {
     public void setName(String groupName) {
         final WebElement nameField = driver.findElement(By.id(NAME_FIELD_ID));
         nameField.sendKeys(groupName);
+    }
+
+    public void setSubcategory() {
+        final WebElement subcategoryField = driver.findElement(By.xpath(SUBCATEGORY_FIELD_XPATH));
+        subcategoryField.click();
     }
 
     public void submit() {

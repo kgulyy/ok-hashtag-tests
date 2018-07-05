@@ -24,6 +24,7 @@ public class PublicPage {
         popup.open();
         popup.createPublicPage();
         popup.setName(name);
+        popup.setSubcategory();
         popup.submit();
     }
 
