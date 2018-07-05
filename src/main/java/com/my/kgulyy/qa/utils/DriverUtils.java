@@ -15,7 +15,7 @@ public class DriverUtils {
     }
 
     public static WebDriver getWebDriver() {
-        String webDriverType = System.getenv("webdriver.type");
+        String webDriverType = System.getenv("WEBDRIVER_TYPE");
         if (webDriverType == null) {
             webDriverType = "local";
         }
@@ -35,14 +35,14 @@ public class DriverUtils {
     }
 
     private static WebDriver getLocalWebDriver() {
-        final String webDriverPath = System.getenv("webdriver.path");
+        final String webDriverPath = System.getenv("WEBDRIVER_PATH");
         System.setProperty("webdriver.chrome.driver", webDriverPath);
 
         return new ChromeDriver();
     }
 
     private static WebDriver getRemoteWebDriver() {
-        final String remoteUrlStr = System.getenv("webdriver.remote.url");
+        final String remoteUrlStr = System.getenv("WEBDRIVER_REMOTE_URL");
         final URL remoteURL = StringUtils.getUrlFromString(remoteUrlStr);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
