@@ -41,8 +41,6 @@ public class TopicHashtagTest {
         mainPage.openGroupsPage();
 
         publicPage.create();
-        publicPage.openForumPage();
-
         topic.create();
     }
 

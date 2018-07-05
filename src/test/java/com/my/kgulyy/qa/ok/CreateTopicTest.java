@@ -31,7 +31,6 @@ public class CreateTopicTest {
         final MainPage mainPage = new MainPage(driver);
         mainPage.openGroupsPage();
         publicPage.create(PAGE_NAME);
-        publicPage.openForumPage();
     }
 
     @Test
