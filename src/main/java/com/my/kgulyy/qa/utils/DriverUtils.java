@@ -42,7 +42,7 @@ public class DriverUtils {
     }
 
     private static WebDriver getRemoteWebDriver() {
-        final String remoteUrlStr = System.getenv("remote.url");
+        final String remoteUrlStr = System.getenv("webdriver.remote.url");
         final URL remoteURL = StringUtils.getUrlFromString(remoteUrlStr);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
