@@ -91,6 +91,8 @@ public class TopicHashtags {
     }
 
     public String getErrorMessageText() {
+        final WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ERROR_MESSAGE_XPATH)));
         final WebElement errorMessage = driver.findElement(By.xpath(ERROR_MESSAGE_XPATH));
         return errorMessage.getText();
     }
