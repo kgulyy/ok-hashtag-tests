@@ -4,19 +4,19 @@ import com.my.kgulyy.qa.ok.components.GroupPage;
 import com.my.kgulyy.qa.ok.components.PopupForCreateGroup;
 import org.openqa.selenium.WebDriver;
 
-public class PublicPage {
-    private static final String DEFAULT_PAGE_NAME = "My Page";
+public class Group {
+    private static final String DEFAULT_GROUP_NAME = "My Group";
 
     private final WebDriver driver;
     private final GroupPage groupPage;
 
-    public PublicPage(WebDriver driver) {
+    public Group(WebDriver driver) {
         this.driver = driver;
         groupPage = new GroupPage(driver);
     }
 
     public void create() {
-        create(DEFAULT_PAGE_NAME);
+        create(DEFAULT_GROUP_NAME);
     }
 
     public void create(String name) {
@@ -30,10 +30,6 @@ public class PublicPage {
 
     public void openFeedPage() {
         groupPage.openFeedPage();
-    }
-
-    public void openForumPage() {
-        groupPage.openForumPage();
     }
 
     public String getName() {

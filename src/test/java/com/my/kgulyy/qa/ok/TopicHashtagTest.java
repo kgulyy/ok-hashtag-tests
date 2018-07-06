@@ -2,7 +2,7 @@ package com.my.kgulyy.qa.ok;
 
 import com.my.kgulyy.qa.ok.components.MainPage;
 import com.my.kgulyy.qa.ok.pageobjects.Auth;
-import com.my.kgulyy.qa.ok.pageobjects.PublicPage;
+import com.my.kgulyy.qa.ok.pageobjects.Group;
 import com.my.kgulyy.qa.ok.pageobjects.Topic;
 import com.my.kgulyy.qa.utils.DriverUtils;
 import com.my.kgulyy.qa.utils.StringUtils;
@@ -23,12 +23,12 @@ public class TopicHashtagTest {
     private static final String MIN_LENGTH_OF_TAG_WARNING = "Минимальная длина ключевого слова 2 символа";
 
     private final WebDriver driver;
-    private final PublicPage publicPage;
+    private final Group group;
     private final Topic topic;
 
     public TopicHashtagTest() {
         driver = DriverUtils.getWebDriver();
-        publicPage = new PublicPage(driver);
+        group = new Group(driver);
         topic = new Topic(driver);
     }
 
@@ -40,14 +40,14 @@ public class TopicHashtagTest {
         final MainPage mainPage = new MainPage(driver);
         mainPage.openGroupsPage();
 
-        publicPage.create();
+        group.create();
         topic.create();
     }
 
     @After
     public void tearDown() {
-        publicPage.openFeedPage();
-        publicPage.remove();
+        group.openFeedPage();
+        group.remove();
         driver.quit();
     }
 
