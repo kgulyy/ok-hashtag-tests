@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import java.util.List;
 
 public class Topic {
-    private static final String DEFAULT_TOPIC_TEXT = "1";
+    private static final String DEFAULT_TOPIC_TEXT = "My Topic";
 
     private final WebDriver driver;
     private final TopicWidget topicWidget;
