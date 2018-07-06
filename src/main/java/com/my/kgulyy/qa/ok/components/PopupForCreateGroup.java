@@ -3,8 +3,6 @@ package com.my.kgulyy.qa.ok.components;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PopupForCreateGroup {
     private static final String CREATE_GROUP_XPATH = "//div[@class=\"create-group\"]/a";
@@ -12,10 +10,6 @@ public class PopupForCreateGroup {
     private static final String NAME_FIELD_ID = "field_name";
     private static final String SUBCATEGORY_FIELD_XPATH = "//select[@id=\"field_pageMixedCategory\"]/option[@value=\"subcatVal12001\"]";
     private static final String SUBMIT_ID = "hook_FormButton_button_create";
-    private static final String POPUP_CLASS_NAME = "modal-new_center";
-
-    private static final long TIMEOUT_IN_SECONDS = 10;
-    private static final long SLEEP_IN_MILLISECONDS = 100;
 
     private final WebDriver driver;
 
@@ -46,11 +40,5 @@ public class PopupForCreateGroup {
     public void submit() {
         final WebElement submitButton = driver.findElement(By.id(SUBMIT_ID));
         submitButton.click();
-        waitClosing();
-    }
-
-    private void waitClosing() {
-        final WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className(POPUP_CLASS_NAME)));
     }
 }

@@ -14,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 public class CreateTopicTest {
     private static final String PAGE_NAME = "My Page";
     private static final String AUTHOR = "Феофан Лампер";
-    private static final String TOPIC_TEXT = "My Topic";
+    private static final String TOPIC_TEXT = "1";
 
     private final WebDriver driver;
     private final PublicPage publicPage;
