@@ -5,12 +5,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public final class DriverUtils {
     private static final long TIME_TO_IMPLICIT_WAIT = 1;
+    private static final long TIMEOUT_IN_SECONDS = 4;
+    private static final long SLEEP_IN_MILLISECONDS = 100;
 
     private DriverUtils() {
     }
@@ -57,5 +60,9 @@ public final class DriverUtils {
         capabilities.setCapability("enableVNC", true);
 
         return new RemoteWebDriver(remoteURL, capabilities);
+    }
+
+    public static WebDriverWait getWebDriverWait(WebDriver driver) {
+        return new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
     }
 }

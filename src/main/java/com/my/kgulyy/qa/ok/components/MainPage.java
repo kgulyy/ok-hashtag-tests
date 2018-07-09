@@ -7,10 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class MainPage {
-    private static final String USERNAME_XPATH = "//a[contains(@data-l,\"userPage\")]/span";
-    private static final String GROUPS_MENU_ITEM_XPATH = "//a[contains(@data-l,\"userAltGroup\")]";
-    private static final String GROUPS_BLOCK_XPATH = "//div[@id=\"hook_Block_MyGroupsNavBlock\"]/div";
-    private static final String NUMBER_OF_GROUPS_XPATH = "//a[starts-with(text(), \"Все мои группы\")]";
+    private static final String USERNAME_XPATH = "//a[contains(@data-l,'userPage')]/span";
+    private static final String GROUPS_MENU_ITEM_XPATH = "//a[contains(@data-l,'userAltGroup')]";
+    private static final String GROUPS_BLOCK_XPATH = "//div[@id='hook_Block_MyGroupsNavBlock']/div";
+    private static final String NUMBER_OF_GROUPS_XPATH = "//a[starts-with(text(), 'Все мои группы')]";
 
     private final WebDriver driver;
 

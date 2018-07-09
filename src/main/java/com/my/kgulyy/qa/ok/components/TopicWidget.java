@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class TopicWidget {
-    private static final String TOPIC_TEXT_XPATH = "//div[contains(@class,\"media-text_cnt_tx\")]";
-    private static final String TOPIC_GROUP_NAME_XPATH = "//span[@class=\"shortcut-wrap\"]/a[contains(@hrefattrs,\"VisitProfile\")]";
-    private static final String TOPIC_AUTHOR_XPATH = "//span[@class=\"shortcut-wrap\"]/a[contains(@hrefattrs,\"userMain\")]";
+    private static final String TOPIC_TEXT_XPATH = "//div[contains(@class,'media-text_cnt_tx')]";
+    private static final String TOPIC_GROUP_NAME_XPATH = "//span[@class='shortcut-wrap']/a[contains(@hrefattrs,'VisitProfile')]";
+    private static final String TOPIC_AUTHOR_XPATH = "//span[@class='shortcut-wrap']/a[contains(@hrefattrs,'userMain')]";
 
     private final WebDriver driver;
 

@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 
 public class GroupPage {
     private static final String GROUP_HEADER_CLASS_NAME = "mctc_name_tx";
-    private static final String FEED_PAGE_LINK_XPATH = "//a[contains(@data-l,\"NavMenu_AltGroup_Main\")]";
+    private static final String FEED_PAGE_LINK_XPATH = "//a[contains(@data-l,'NavMenu_AltGroup_Main')]";
     private static final String OTHER_ACTIONS_BUTTON_CLASS_NAME = "tico_simb_txt";
-    private static final String REMOVE_BUTTON_XPATH = "//a[contains(@hrefattrs,\"RemoveAltGroup\")]";
-    private static final String SUBMIT_REMOVE_BUTTON_XPATH = "//input[@name=\"button_delete\"]";
+    private static final String REMOVE_BUTTON_XPATH = "//a[contains(@hrefattrs,'RemoveAltGroup')]";
+    private static final String SUBMIT_REMOVE_BUTTON_XPATH = "//input[@name='button_delete']";
 
     private final WebDriver driver;
 

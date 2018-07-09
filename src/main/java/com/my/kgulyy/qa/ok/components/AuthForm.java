@@ -9,7 +9,7 @@ public class AuthForm {
 
     private static final String LOGIN_ID = "field_email";
     private static final String PASSWORD_ID = "field_password";
-    private static final String SUBMIT_XPATH = "//input[contains(@data-l,\"sign_in\")]";
+    private static final String SUBMIT_XPATH = "//input[contains(@data-l,'sign_in')]";
 
     private final WebDriver driver;
 

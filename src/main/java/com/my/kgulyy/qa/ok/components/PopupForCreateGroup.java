@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class PopupForCreateGroup {
-    private static final String CREATE_GROUP_XPATH = "//div[@class=\"create-group\"]/a";
-    private static final String CREATE_PUBLIC_PAGE_XPATH = "//a[contains(@data-l,\"PAGE\")]";
+    private static final String CREATE_GROUP_XPATH = "//div[@class='create-group']/a";
+    private static final String CREATE_PUBLIC_PAGE_XPATH = "//a[contains(@data-l,'PAGE')]";
     private static final String NAME_FIELD_ID = "field_name";
-    private static final String SUBCATEGORY_FIELD_XPATH = "//select[@id=\"field_pageMixedCategory\"]/option[@value=\"subcatVal12001\"]";
+    private static final String SUBCATEGORY_FIELD_XPATH = "//select[@id='field_pageMixedCategory']/option[@value='subcatVal12001']";
     private static final String SUBMIT_ID = "hook_FormButton_button_create";
 
     private final WebDriver driver;

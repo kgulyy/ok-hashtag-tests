@@ -1,5 +1,6 @@
 package com.my.kgulyy.qa.ok.components;
 
+import com.my.kgulyy.qa.utils.DriverUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -7,24 +8,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 public class TopicHashtags {
-    private static final String ADD_TAGS_BUTTON_XPATH = "//a[contains(@href,\"AddTopicTag\")]";
-    private static final String EDIT_TAG_BUTTON_XPATH = "//a[contains(@href,\"EditTopicTag\")]";
+    private static final String ADD_TAGS_BUTTON_XPATH = "//a[contains(@href,'AddTopicTag')]";
+    private static final String EDIT_TAG_BUTTON_XPATH = "//a[contains(@href,'EditTopicTag')]";
 
-    private static final String REMOVE_TAG_BUTTON_TEMPLATE_XPATH = "//div[@class=\"tag\"]//span[../../span=\"%s\"]";
-    private static final String SUBMIT_BUTTON_XPATH = "//span[contains(@class,\"tag-box_button\")]";
+    private static final String REMOVE_TAG_BUTTON_TEMPLATE_XPATH = "//div[@class='tag']//span[../../span='%s']";
+    private static final String SUBMIT_BUTTON_XPATH = "//span[contains(@class,'tag-box_button')]";
 
-    private static final String TAG_XPATH = "//a[contains(@hrefattrs,\"_TopicTag\")]";
-    private static final String TAG_TEMPLATE_XPATH = "//a[contains(@hrefattrs,\"_TopicTag\") and text()=\"%s\"]";
-    private static final String TAGS_INPUT_XPATH = "//input[@name=\"st.newTag\"]";
+    private static final String TAG_XPATH = "//a[contains(@hrefattrs,'_TopicTag')]";
+    private static final String TAG_TEMPLATE_XPATH = "//a[contains(@hrefattrs,'_TopicTag') and text()='%s']";
+    private static final String TAGS_INPUT_XPATH = "//input[@name='st.newTag']";
 
-    private static final String HASHTAG_XPATH = "//a[contains(@class,\"__hashtag\")]";
-    private static final String HASHTAG_TEMPLATE_XPATH = "//a[contains(@class,\"__hashtag\") and text()=\"#%s\"]";
+    private static final String HASHTAG_XPATH = "//a[contains(@class,'__hashtag')]";
+    private static final String HASHTAG_TEMPLATE_XPATH = "//a[contains(@class,'__hashtag') and text()='#%s']";
 
-    private static final String ERROR_MESSAGE_XPATH = "//span[@class=\"input-e\"]";
-    private static final String TAG_LENGTH_COUNTER_XPATH = "//span[contains(@class,\"txt-counter\")]";
-
-    private static final long TIMEOUT_IN_SECONDS = 10;
-    private static final long SLEEP_IN_MILLISECONDS = 100;
+    private static final String ERROR_MESSAGE_XPATH = "//span[@class='input-e']";
+    private static final String TAG_LENGTH_COUNTER_XPATH = "//span[contains(@class,'txt-counter')]";
 
     private final WebDriver driver;
 
@@ -33,10 +31,8 @@ public class TopicHashtags {
     }
 
     public void openTagsInput() {
-        final WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ADD_TAGS_BUTTON_XPATH)));
-        final WebElement addTagButton = driver.findElement(By.xpath(ADD_TAGS_BUTTON_XPATH));
-        addTagButton.click();
+        final WebDriverWait wait = DriverUtils.getWebDriverWait(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ADD_TAGS_BUTTON_XPATH))).click();
     }
 
     public void setTag(String tag) {
@@ -91,10 +87,9 @@ public class TopicHashtags {
     }
 
     public String getErrorMessageText() {
-        final WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ERROR_MESSAGE_XPATH)));
-        final WebElement errorMessage = driver.findElement(By.xpath(ERROR_MESSAGE_XPATH));
-        return errorMessage.getText();
+        final WebDriverWait wait = DriverUtils.getWebDriverWait(driver);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(ERROR_MESSAGE_XPATH)))
+                .getText();
     }
 
     public int getRemainingTagLength() {
