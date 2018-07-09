@@ -43,17 +43,25 @@ public class Topic {
         return topicWidget.getAuthor();
     }
 
-    public void addTag(String tag) {
+    public void setTag(String tag) {
         topicHashtags.openTagsInput();
         topicHashtags.setTag(tag);
+    }
+
+    public void addTag(String tag) {
+        setTag(tag);
         topicHashtags.submit();
     }
 
-    public void addAllTags(List<String> tags) {
+    public void setAllTags(List<String> tags) {
         topicHashtags.openTagsInput();
         for (String tag : tags) {
             topicHashtags.setTag(tag);
         }
+    }
+
+    public void addAllTags(List<String> tags) {
+        setAllTags(tags);
         topicHashtags.submit();
     }
 
