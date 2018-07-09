@@ -20,8 +20,7 @@ public final class DriverUtils {
         final WebDriver driver;
         if (webDriverType != null && webDriverType.equals("remote")) {
             driver = getRemoteWebDriver();
-        }
-        else {
+        } else {
             driver = getLocalWebDriver();
         }
         driver.manage().window().maximize();
