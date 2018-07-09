@@ -39,6 +39,8 @@ public class PopupForCreateTopic {
     }
 
     public void submit() {
+        final WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS, SLEEP_IN_MILLISECONDS);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(SUBMIT_BUTTON_XPATH)));
         final WebElement submitButton = driver.findElement(By.xpath(SUBMIT_BUTTON_XPATH));
         submitButton.click();
     }
