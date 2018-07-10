@@ -1,8 +1,11 @@
 package com.my.kgulyy.qa.ok.components;
 
+import com.my.kgulyy.qa.utils.DriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PopupForCreateGroup {
     private static final String CREATE_GROUP_XPATH = "//div[@class='create-group']/a";
@@ -23,8 +26,8 @@ public class PopupForCreateGroup {
     }
 
     public void createPublicPage() {
-        final WebElement createPublicPageButton = driver.findElement(By.xpath(CREATE_PUBLIC_PAGE_XPATH));
-        createPublicPageButton.click();
+        final WebDriverWait wait = DriverUtils.getWebDriverWait(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(CREATE_PUBLIC_PAGE_XPATH))).click();
     }
 
     public void setName(String groupName) {
