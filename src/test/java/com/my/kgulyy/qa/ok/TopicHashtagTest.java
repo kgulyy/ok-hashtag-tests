@@ -6,7 +6,6 @@ import com.my.kgulyy.qa.ok.pageobjects.Group;
 import com.my.kgulyy.qa.ok.pageobjects.Topic;
 import com.my.kgulyy.qa.utils.DriverUtils;
 import com.my.kgulyy.qa.utils.StringUtils;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -49,11 +48,6 @@ public class TopicHashtagTest {
         DRIVER.quit();
     }
 
-    @After
-    public void cleanUp() {
-        DRIVER.navigate().refresh();
-    }
-
     @Test
     public void addRemoveOneTag() {
         boolean noOneHashtags = TOPIC.noOneHashtags();
@@ -93,6 +87,8 @@ public class TopicHashtagTest {
 
         final String errorMessage = TOPIC.getTagErrorMessage();
         assertEquals(MIN_LENGTH_OF_TAG_WARNING, errorMessage);
+
+        DRIVER.navigate().refresh();
     }
 
     @Test
@@ -145,6 +141,8 @@ public class TopicHashtagTest {
 
         final int remainingTagLength = TOPIC.getRemainingTagLength();
         assertEquals(-1, remainingTagLength);
+
+        DRIVER.navigate().refresh();
     }
 
     @Test
@@ -193,6 +191,8 @@ public class TopicHashtagTest {
 
         final String errorMessage = TOPIC.getTagErrorMessage();
         assertEquals(TAG_WITH_SPEC_SYMBOL_ERROR, errorMessage);
+
+        DRIVER.navigate().refresh();
     }
 
     @Test
@@ -202,6 +202,8 @@ public class TopicHashtagTest {
 
         final String errorMessage = TOPIC.getTagErrorMessage();
         assertEquals(TAG_WITH_SPEC_SYMBOL_ERROR, errorMessage);
+
+        DRIVER.navigate().refresh();
     }
 
     @Test
@@ -292,6 +294,7 @@ public class TopicHashtagTest {
         checkHashtag(addedTag);
 
         TOPIC.removeTag(addedTag);
+        DRIVER.navigate().refresh();
     }
 
     @Test
@@ -327,6 +330,7 @@ public class TopicHashtagTest {
         DRIVER.navigate().refresh();
         tags.remove(tags.size() - 1);
         TOPIC.removeAllTags(tags);
+        DRIVER.navigate().refresh();
     }
 
     @Test
@@ -343,6 +347,7 @@ public class TopicHashtagTest {
         checkHashtag(newTag);
 
         TOPIC.removeTag(newTag);
+        DRIVER.navigate().refresh();
     }
 
     @Test
@@ -369,6 +374,7 @@ public class TopicHashtagTest {
         checkAllHashtags(newTags);
 
         TOPIC.removeAllTags(newTags);
+        DRIVER.navigate().refresh();
     }
 
     @Test
@@ -384,6 +390,7 @@ public class TopicHashtagTest {
         checkAllHashtags(newTags);
 
         TOPIC.removeAllTags(newTags);
+        DRIVER.navigate().refresh();
     }
 
     private void checkTempTag(String tag) {
