@@ -14,8 +14,6 @@ import org.openqa.selenium.WebDriver;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -318,9 +316,7 @@ public class TopicHashtagTest {
 
     @Test
     public void addTooMuchTags() {
-        final List<String> tags = Stream
-                .of("11", "22", "33", "44", "55", "66", "77", "88")
-                .collect(Collectors.toCollection(ArrayList::new));
+        final List<String> tags = new ArrayList<>(Arrays.asList("11", "22", "33", "44", "55", "66", "77", "88"));
 
         TOPIC.setAllTags(tags);
 
