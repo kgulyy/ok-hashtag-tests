@@ -8,7 +8,6 @@ pipeline {
     environment {
         LOGIN           = 'technopark60'
         PASSWORD        = 'testQA1'
-        WEBDRIVER_TYPE  = 'remote'
         WEBDRIVER_REMOTE_URL   = 'http://178.128.36.229:4444/wd/hub'
     }
     stages {
