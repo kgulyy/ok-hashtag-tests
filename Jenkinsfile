@@ -5,11 +5,6 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
-    environment {
-        LOGIN           = 'technopark60'
-        PASSWORD        = 'testQA1'
-        WEBDRIVER_REMOTE_URL   = 'http://178.128.36.229:4444/wd/hub'
-    }
     stages {
         stage('Build') {
             steps {
