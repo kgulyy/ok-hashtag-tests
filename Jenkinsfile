@@ -6,6 +6,8 @@ pipeline {
         }
     }
     environment {
+        BROWSER_NAME = 'chrome'
+        BROWSER_VERSION = '65.0'
     }
     stages {
         stage('Build') {
