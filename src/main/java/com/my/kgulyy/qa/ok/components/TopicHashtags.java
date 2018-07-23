@@ -11,11 +11,11 @@ public class TopicHashtags {
     private static final String ADD_TAGS_BUTTON_XPATH = "//a[contains(@href,'AddTopicTag')]";
     private static final String EDIT_TAG_BUTTON_XPATH = "//a[contains(@href,'EditTopicTag')]";
 
-    private static final String REMOVE_TAG_BUTTON_TEMPLATE_XPATH = "//div[@class='tag']//span[../../span=\"%s\"]";
+    private static final String REMOVE_TAG_BUTTON_TEMPLATE_XPATH = "//div[@class='tag']//span[../../span='%s']";
     private static final String SUBMIT_BUTTON_XPATH = "//span[contains(@class,'tag-box_button')]";
 
     private static final String TAG_XPATH = "//a[contains(@hrefattrs,'_TopicTag')]";
-    private static final String TAG_TEMPLATE_XPATH = "//a[contains(@hrefattrs,'_TopicTag') and text()=\"%s\"]";
+    private static final String TAG_TEMPLATE_XPATH = "//a[contains(@hrefattrs,'_TopicTag') and text()='%s']";
     private static final String TAGS_INPUT_XPATH = "//input[@name='st.newTag']";
 
     private static final String HASHTAG_XPATH = "//a[contains(@class,'__hashtag')]";
