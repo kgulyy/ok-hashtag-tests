@@ -5,6 +5,8 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+    environment {
+    }
     stages {
         stage('Build') {
             steps {
